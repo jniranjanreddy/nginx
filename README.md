@@ -139,3 +139,51 @@ written by Igor Sysoev
 edited by Brian Mercer
 
 ```
+#########################################################################
+#ubuntu 
+```
+docker run -dit --name docker1 -p 8080:80 httpd:2.4
+docker run -dit --name docker2 -p 8081:80 httpd:2.4
+
+docker exec <container name> sed -i 's/It works!/Docker 1/' /usr/local/apache2/htdocs/index.html
+docker exec <Container name> sed -i 's/It works!/Docker 2/' /usr/local/apache2/htdocs/index.html
+    
+cd /etc/nginx/sites-available
+root@dev-server01 /etc/nginx/sites-available # cat docker1.jnrlabs.com
+server {
+  listen 80;
+  server_name docker1.jnrlabs.com;
+
+  location / {
+    proxy_pass http://localhost:8080;
+  }
+}
+
+root@dev-server01 /etc/nginx/sites-available # cat docker2.jnrlabs.com
+server {
+  listen 80;
+  server_name docker2.jnrlabs.com;
+
+  location / {
+    proxy_pass http://localhost:8081;
+  }
+}
+root@dev-server01 /etc/nginx/sites-available # ln -s /etc/nginx/sites-available/docker1.jnrlabs.com /etc/nginx/sites-enabled/
+root@dev-server01 /etc/nginx/sites-available # ln -s /etc/nginx/sites-available/docker2.jnrlabs.com /etc/nginx/sites-enabled/
+
+root@dev-server01 /etc/nginx/sites-enabled # ll
+total 8
+drwxr-xr-x 2 root root 4096 May 10 20:07 ./
+drwxr-xr-x 8 root root 4096 May 10 21:11 ../
+lrwxrwxrwx 1 root root   34 May 10 19:02 default -> /etc/nginx/sites-available/default
+lrwxrwxrwx 1 root root   46 May 10 19:12 docker1.jnrlabs.com -> /etc/nginx/sites-available/docker1.jnrlabs.com
+lrwxrwxrwx 1 root root   46 May 10 19:13 docker2.jnrlabs.com -> /etc/nginx/sites-available/docker2.jnrlabs.com
+lrwxrwxrwx 1 root root   46 May 10 20:07 jenkins.jnrlabs.com -> /etc/nginx/sites-available/jenkins.jnrlabs.com
+    
+root@dev-server01 /etc/nginx/sites-available # nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+    
+systemctl restart nginx
+
+```
