@@ -1,6 +1,8 @@
 # nginx
 
 ## What is nginx
+
+BurpSuite for proxy testing
 ```
 ## Source
 https://nginx.org/en/docs/http/request_processing.html
