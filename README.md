@@ -4,6 +4,8 @@
 
 ![image](https://user-images.githubusercontent.com/83489863/231879873-93719091-1340-4506-8250-9cbc0738e78d.png)
 
+## nginx architecture
+![image](https://user-images.githubusercontent.com/83489863/231884173-da2ef1d8-e102-48c1-a38c-6f8059db01a4.png)
 
 BurpSuite for proxy testing
 ```
