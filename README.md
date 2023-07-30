@@ -1,5 +1,7 @@
 # nginx
 
+## Source: https://www.youtube.com/watch?v=NwijBVfiK_o&t=4s
+
 ## What is nginx
 
 ![image](https://user-images.githubusercontent.com/83489863/231879873-93719091-1340-4506-8250-9cbc0738e78d.png)
