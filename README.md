@@ -3,6 +3,42 @@
 ## Source: https://www.youtube.com/watch?v=NwijBVfiK_o&t=4s
 
 ## What is nginx
+```
+server { #### Start of Context
+		listen 80;   # Directive
+		server_name 192.168.9.13;  # Directive
+		root /bloggingtemplate;  # Directive
+
+		location /contactus {
+			return 200 "Hello!! you are inside the custom location";
+		}
+    } # End of Context
+```
+## Priority of Modifiers
+```
+1. Exact match                = URI
+2. Preferential Prefic match  = ^~ URI
+3. REGEX match                = ~* URI 
+```
+## variables
+```
+variables - NGINX configuration can hold the variable and NGINX variable can hold the String Value
+set - directive is used to assign varibale in NGINX
+set $a "Hello World"
+
+Few important inbuilt variables
+$args - List of arguments on the request line.
+$body_bytes_sent - Number of bytes sent to the client.
+$bytes_received  - Number of bytes received from a client.
+$Connection_requests - Current number of requests made via connection
+$date_local - Current time in the local time zone
+$hostname - Host name
+$nginx_version Shows nginx Version
+```
+## Rewrite and written
+```
+```
+
 
 ![image](https://user-images.githubusercontent.com/83489863/231879873-93719091-1340-4506-8250-9cbc0738e78d.png)
 
