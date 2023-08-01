@@ -38,7 +38,54 @@ $nginx_version Shows nginx Version
 ## Rewrite and written
 ```
 ```
+## Nginx Buffers.
+```
+client_body_buffer_size:
+client_header_buffer_size:
+timeouts:
+gzip compression: 
+```
 
+## Nginx Dynamic Modules.
+```
+root@nginx02:~# cd /etc/nginx/
+root@nginx02:/etc/nginx# ll
+total 84
+drwxr-xr-x   8 root root  4096 Jul 30 17:09 ./
+drwxr-xr-x 132 root root 12288 Aug  1 11:59 ../
+drwxr-xr-x   2 root root  4096 Nov 10  2022 conf.d/
+-rw-r--r--   1 root root  1077 Feb  4  2019 fastcgi.conf
+-rw-r--r--   1 root root  1007 Feb  4  2019 fastcgi_params
+-rw-r--r--   1 root root  2837 Feb  4  2019 koi-utf
+-rw-r--r--   1 root root  2223 Feb  4  2019 koi-win
+-rw-r--r--   1 root root  3957 Feb  4  2019 mime.types
+drwxr-xr-x   2 root root  4096 Nov 10  2022 modules-available/
+drwxr-xr-x   2 root root  4096 Jul 29 22:45 modules-enabled/
+-rw-r--r--   1 root root  2462 Aug  1 12:05 nginx.conf
+-rw-r--r--   1 root root  1490 Jul 30 17:09 nginx.conf-backup
+-rw-r--r--   1 root root   180 Feb  4  2019 proxy_params
+-rw-r--r--   1 root root   636 Feb  4  2019 scgi_params
+drwxr-xr-x   2 root root  4096 Jul 29 22:44 sites-available/
+drwxr-xr-x   2 root root  4096 Jul 29 22:44 sites-enabled/
+drwxr-xr-x   2 root root  4096 Jul 29 22:44 snippets/
+-rw-r--r--   1 root root   664 Feb  4  2019 uwsgi_params
+-rw-r--r--   1 root root  3071 Feb  4  2019 win-utf
+
+
+root@nginx02:/etc/nginx# nginx -V
+nginx version: nginx/1.18.0 (Ubuntu)
+built with OpenSSL 1.1.1f  31 Mar 2020
+TLS SNI support enabled
+configure arguments: --with-cc-opt='-g -O2 -fdebug-prefix-map=/build/nginx-lUTckl/nginx-1.18.0=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC -Wdate-time -D_FORTIFY_SOURCE=2' --with-ld-opt='-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fPIC' --prefix=/usr/share/nginx --conf-path=/etc/nginx/nginx.conf --http-log-path=/var/log/nginx/access.log --error-log-path=/var/log/nginx/error.log --lock-path=/var/lock/nginx.lock --pid-path=/run/nginx.pid --modules-path=/usr/lib/nginx/modules --http-client-body-temp-path=/var/lib/nginx/body --http-fastcgi-temp-path=/var/lib/nginx/fastcgi --http-proxy-temp-path=/var/lib/nginx/proxy --http-scgi-temp-path=/var/lib/nginx/scgi --http-uwsgi-temp-path=/var/lib/nginx/uwsgi --with-debug --with-compat --with-pcre-jit --with-http_ssl_module --with-http_stub_status_module --with-http_realip_module --with-http_auth_request_module --with-http_v2_module --with-http_dav_module --with-http_slice_module --with-threads --with-http_addition_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_image_filter_module=dynamic --with-http_sub_module --with-http_xslt_module=dynamic --with-stream=dynamic --with-stream_ssl_module --with-mail=dynamic --with-mail_ssl_module
+
+# How to install nginx modules.
+apt-get install nginx-extras
+
+# modules can be found here
+/usr/lib/nginx/modules/ngx_http_image_filter_module.so
+
+
+```
 
 ![image](https://user-images.githubusercontent.com/83489863/231879873-93719091-1340-4506-8250-9cbc0738e78d.png)
 
