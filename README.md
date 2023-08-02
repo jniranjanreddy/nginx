@@ -45,7 +45,11 @@ client_header_buffer_size:
 timeouts:
 gzip compression: 
 ```
-
+## Siege
+```
+apt-get install siege
+root# siege -v -r 2 -c 5 
+```
 ## Nginx Dynamic Modules.
 ```
 root@nginx02:~# cd /etc/nginx/
