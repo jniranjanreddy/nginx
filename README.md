@@ -117,6 +117,22 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 
 ```
+### How to configure ssl or https
+```
+openssl req -x509  -days 365 -nodes -newkey rsa:2048 -keyout /etc/nginx/ssl/self.key -out /etc/nginx/ssl/self.crt
+server {
+        #listen 80;
+        listen 443 ssl http2;
+        server_name 192.168.9.13;
+        ssl_certificate /etc/nginx/ssl/self.crt;
+        ssl_certificate_key /etc/nginx/ssl/self.key;
+            location / {
+              proxy_set_header Host $host;
+              proxy_pass http://appserver;
+            }
+
+    }
+```
 
 ```
 [root@k8s-helm nginx]# cat /etc/nginx/nginx.conf
